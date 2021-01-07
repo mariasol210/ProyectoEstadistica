@@ -163,7 +163,7 @@ rm(asimetria,cuartiles,desviacion_tipica, kurtosis, media, mediana_Q2,
    resultados_cases,resultados_deaths)
 
 
-
+# Esta es la parte de Adi pero la hice yo
 # Mortalidad America
 America_mortalidad <- america %>%
  mutate(month=format(date, "%m")) %>%
@@ -173,7 +173,9 @@ America_mortalidad <- america %>%
             total=(totaldeaths/totalcases)*100)
 
 america_mortGraf <- ggplot(data=America_mortalidad, aes(x=month, y=total)) + 
-  geom_line(color="red", size=1,aes(group = 1)) + geom_point() 
+  geom_line(color="red", size=1,aes(group = 1)) + geom_point() +
+  labs(title="Tasa de letalidad mensualmente en America", fill = "Region",
+       x="Mes", y="Tasa de letalidad", caption="(Basado en los datos de Our World in Data[1])") 
 america_mortGraf
 
 mortalidad_mean <- mean(America_mortalidad$total,na.rm = TRUE)
@@ -192,7 +194,9 @@ Europa_mortalidad <- europa %>%
             total=(totaldeaths/totalcases)*100)
 
 eruopa_mortGraf <- ggplot(data=Europa_mortalidad, aes(x=month, y=total)) + 
-  geom_line(color="purple", size=1, aes(group = 1)) + geom_point() 
+  geom_line(color="purple", size=1, aes(group = 1)) + geom_point()+
+  labs(title="Tasa de letalidad mensualmente en Europa", fill = "Region",
+       x="Mes", y="Tasa de letalidad", caption="(Basado en los datos de Our World in Data[1])") 
 eruopa_mortGraf
 
 mortalidad_mean <- mean(Europa_mortalidad$total,na.rm = TRUE)
